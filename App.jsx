@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import Todo from './components/Todo.jsx'
-import Title from './components/Title.jsx'
-import Modal from './components/Modal.jsx'
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Nav from "./components/Nav";
+import Users from "./pages/Users";
 
 function App() {
   return (
-    <div>
-      <Title />
-      <div className="todo__wrapper">
-      <Todo title="Finish Frontend Simplified" 
-          paragraph="Code along with Frontend Simplified step by step."
-      />
-      <Todo title="Finish Interview Section"
-            paragraph="Finish every interview question in the next 6 weeks." 
-            />
-      <Todo title="Land a $100k Job" 
-        paragraph="Apply to 100 jobs"/>
-      </div>
-      <Modal title="Are you sure you want to delete?" />
-    </div>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/users/:username" element={<Users />} />
+        </Routes>
+      </Router>
   );
 }
 
